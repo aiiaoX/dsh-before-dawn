@@ -3,6 +3,8 @@
 set -euo pipefail
 SRC_DIR="$(cd "$(dirname "$0")" && pwd)"
 OUT_DIR="${1:-$(dirname "$SRC_DIR")/dist}"
+# 每次打包自动留存一份到归档目录（可用 DAWN_ARCHIVE_DIR 覆盖）
+ARCHIVE_DIR="${DAWN_ARCHIVE_DIR:-D:/Before Dawn}"
 mkdir -p "$OUT_DIR"
 cd "$SRC_DIR"
 NAME=$(node -p "require('./package.json').name.replace('@','').replace('/','-')")
@@ -49,3 +51,26 @@ const lines = [
 fs.writeFileSync(path.join(outDir, 'MANIFEST.txt'), lines.join('\n'), 'utf8');
 console.log(lines.join('\n'));
 NODEEOF
+# ---- 自动归档：$ARCHIVE_DIR/<版本>/ ----
+mkdir -p "$ARCHIVE_DIR/$VER"
+cp -f "$TGZ" "$ZIP" "$OUT_DIR/MANIFEST.txt" "$ARCHIVE_DIR/$VER/"
+node - "$ARCHIVE_DIR/$VER" <<'ARC'
+const fs = require('fs'), path = require('path');
+const dir = process.argv[2];
+const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+const list = fs.readdirSync(dir).sort();
+const lines = [
+  '凌晨（Before Dawn）归档备份',
+  '包名    : ' + pkg.name,
+  '版本    : ' + pkg.version,
+  '归档时间: ' + new Date().toISOString(),
+  '',
+  ...list.map((f) => '  ' + f + '  (' + fs.statSync(path.join(dir, f)).size + ' B)'),
+  '',
+  '恢复方式：把 tgz 交给插件管理 install_bundle（绝对路径）即可。',
+  '',
+];
+fs.writeFileSync(path.join(dir, 'ARCHIVE.txt'), lines.join('\n'), 'utf8');
+console.log('已归档到: ' + dir);
+console.log(lines.join('\n'));
+ARC

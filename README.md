@@ -192,6 +192,23 @@ compat.json     版本 → 说明，供体检显示
 ```
 
 
+## 打包与归档
+
+```bash
+node tools/bump.mjs --set 1.0.1 --pack     # 改版本 + 打包
+bash pack.sh                               # 只打包当前版本
+```
+
+每次打包会产出三件（`dist/`）：安装包 `.tgz`、源码包 `-src.zip`、校验清单 `MANIFEST.txt`，
+并**自动复制一份到归档目录** `D:\Before Dawn\<版本>\`（含 `ARCHIVE.txt`）。
+换目录用 `DAWN_ARCHIVE_DIR` 覆盖：
+
+```bash
+DAWN_ARCHIVE_DIR="E:/backup" bash pack.sh
+```
+
+归档是离线快照，与 GitHub Release 无关；只想留一份手头可装的包时，直接取 `D:\Before Dawn\<版本>\*.tgz`。
+
 ## 版本沿革
 
 | 版本 | 说明 |
