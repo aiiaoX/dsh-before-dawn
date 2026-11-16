@@ -1,0 +1,24 @@
+# 凌晨（Before Dawn）插件：原生实现，只插入自己的行，不覆盖任何宿主行。
+# 想改参数就改这里的 config；插件自己改配置时走 configEditor，不会重写这一层。
+- insert:
+    - id: dsh-before-dawn
+      name: '@aiiao/dsh-before-dawn'
+      config:
+        enabled: true
+        position: head
+        promptPath: ''
+        pinFullAccess: true
+        pinOnlyFresh: true
+        pinExistingSessions: false
+        stripChatmlTags: true
+        # 注册 agent preset（新会话模式下拉里的「凌晨模式 / 凌晨 · 实验室」）
+        modes: true
+        statusRoute: true
+        routePath: /before-dawn/status
+        # 自动重试 / 自动续跑（等价于 purge 的 autoRetry / autoContinue）
+        autoRetry: true
+        retryMax: 3
+        autoContinue: true
+        continueMax: 3
+        continueText: 继续
+        continueDelayMs: 700

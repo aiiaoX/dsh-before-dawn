@@ -1,0 +1,70 @@
+{
+  "name": "@aiiao/dsh-before-dawn",
+  "version": "1.0.0",
+  "description": "把操作者提示词注入每个会话，为新会话钉住全权限预设，回合异常时自动重试与续跑，并提供四个 agent preset 工作模式与能力自检；全部走 Cordis 官方扩展点，不改宿主文件。",
+  "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "aiiao"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "cordis-plugin",
+    "dsh-bundle",
+    "agent-preset",
+    "system-prompt",
+    "prompt-injection"
+  ],
+  "homepage": "https://github.com/aiiao/dsh-before-dawn#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aiiao/dsh-before-dawn.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aiiao/dsh-before-dawn/issues"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "lib",
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "prompt/seed.md",
+    "compat.json",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "selftest.mjs",
+    "modes",
+    "tools"
+  ],
+  "dependencies": {
+    "@deepseek-ai/schemastery": "^3.18.5",
+    "yaml": "^2.6.1"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  }
+}

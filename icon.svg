@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Before dawn - a pale sun still below a monochrome horizon">
+  <defs>
+    <linearGradient id="disc" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.55" stop-color="#c9cacc"/>
+      <stop offset="1" stop-color="#4a4c50"/>
+    </linearGradient>
+    <radialGradient id="haze" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="below"><rect x="0" y="30" width="64" height="34"/></clipPath>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#08090b"/>
+  <ellipse cx="32" cy="39" rx="25" ry="17" fill="url(#haze)"/>
+  <g clip-path="url(#below)">
+    <circle cx="32" cy="30" r="16" fill="url(#disc)"/>
+  </g>
+  <path d="M8.5 30 H55.5" stroke="#ececed" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M8.5 33.6 H55.5" stroke="#ffffff" stroke-width="0.9" stroke-linecap="round" opacity="0.18"/>
+  <g stroke="#b9babc" stroke-width="1.8" stroke-linecap="round" opacity="0.45">
+    <path d="M19.5 46 L15.8 50.2"/>
+    <path d="M44.5 46 L48.2 50.2"/>
+  </g>
+  <g fill="#ffffff">
+    <circle cx="16.5" cy="15.5" r="1.15" opacity="0.62"/>
+    <circle cx="46" cy="11.5" r="0.95" opacity="0.45"/>
+    <circle cx="39.5" cy="18.5" r="0.8" opacity="0.34"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+node_modules/
+dist/
+*.bak
+*.bak-*
+*.tgz
+*.zip
+.tmp*
+*.log
+.DS_Store
+Thumbs.db
+
+# 需要带 workflow scope 的 token 才能推；用网页或 gh auth login 后再放开
+.github/workflows/

@@ -1,0 +1,6 @@
+{
+  "0.2.2": "0.2.x 实测可用：systemPrompt.section / permissionPresets.set / agent/request-error(waterfall) / agent/status(emit) / agent.followup / agentPresets.register(模式) / tools / commands / webServer。",
+  "0.2.1": "0.2.1 系列：接口与 0.2.2 一致；permissionPresets.current 缺失时插件按「未知当前值」处理，仍然执行 set。",
+  "0.2": "0.2.x：按能力探测运行。缺哪个服务只影响对应功能，并在 /dawn doctor 的能力矩阵里标成 off。",
+  "default": "未收录的版本：插件不做版本号判断，只做能力探测；用 /dawn doctor 看哪一项扩展点失效，再决定是否调整。"
+}
